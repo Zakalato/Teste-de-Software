@@ -1,0 +1,65 @@
+package fonts;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+class TestaOperador {
+	static OperadorAritmetrico operador;
+
+	@BeforeAll
+	static void setUpBeforeClass() throws Exception {
+		operador = new OperadorAritmetrico(2,3);
+	}
+
+	@AfterAll
+	static void tearDownAfterClass() throws Exception {
+		operador = null;
+	}
+	
+	@BeforeEach
+	void setUp() throws Exception {
+		System.out.println("Iniciando teste");
+	}
+	
+	@AfterEach
+	void tearDown() throws Exception {
+		System.out.println("Finalizando o teste");
+	}
+	
+	@Test
+	void testaSoma() {
+		assertEquals(5, operador.somar(),0 );
+	}
+	
+	@Test
+	void testaSubtracao() {
+		fail("Não implementado");
+	}
+	
+	@Test
+	void testaDivisao() {
+		fail("Não implementado");
+	}
+	
+	@Test
+	void testaMultiplicacao() {
+		fail("Não implementado");
+	}
+	
+	@ParameterizedTest
+	@DisplayName("Um teste parametrizado")
+	@ValueSource(ints = {2,4,6,10,8})
+	void ehPar(int number) {
+		assertTrue(operador.ehPar(number));
+	}
+	
+	
+}
